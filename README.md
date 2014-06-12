@@ -1,4 +1,4 @@
 ganglia-metrics
 ===============
 
-Ganglia metrics
+A collection of useful ganglia metrics
