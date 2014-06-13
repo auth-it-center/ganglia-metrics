@@ -1,11 +1,10 @@
 #!/bin/bash
+QUERYDB=$(command -v queryDb)
+GMETRIC=$(command -v gmetric)
 
-if ( ! ( command -v queryDb &>/dev/null ) ) || ( ! ( command -v gmetric &>/dev/null ) ); then
-   echo "neccessary commands not found"
+if [[ -z $QUERYDB ]] || [[ -z $GMETRIC ]]; then
+   echo "necessary commands not found"
 else
-   QUERYDB=$(command -v queryDb)
-   GMETRIC=$(command -v gmetric)
-
    for i in REALLY-RUNNING IDLE ABORTED UNKNOWN REALLY-RUNNING,IDLE,ABORTED,UNKNOWN
    do
       VALUE=$( $QUERYDB -s $i | sed 's/[^0-9]*//g' )
